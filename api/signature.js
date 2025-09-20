@@ -1,15 +1,14 @@
 const crypto = require('crypto');
 
 export default function handler(req, res) {
-  const { transformation } = req.query;
+  const { eager } = req.query;
   
-  // Generate fresh timestamp
   const timestamp = Math.floor(Date.now() / 1000);
   
   const params = { 
+    eager: eager,
     eager_async: 'true',
-    timestamp: timestamp.toString(), 
-    transformation 
+    timestamp: timestamp.toString()
   };
   
   const sortedParams = Object.keys(params)

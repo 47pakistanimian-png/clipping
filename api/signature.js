@@ -1,11 +1,14 @@
 const crypto = require('crypto');
 
 export default function handler(req, res) {
-  const { transformation, timestamp } = req.query;
+  const { transformation } = req.query;
+  
+  // Generate fresh timestamp
+  const timestamp = Math.floor(Date.now() / 1000);
   
   const params = { 
     eager_async: 'true',
-    timestamp, 
+    timestamp: timestamp.toString(), 
     transformation 
   };
   
